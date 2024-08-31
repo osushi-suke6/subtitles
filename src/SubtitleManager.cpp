@@ -121,6 +121,20 @@ namespace Subtitles
 		auto root = hudMenu->GetRuntimeData().root;
 
 		if (bigSubtitle.str().length() > 0) {
+			std::string currentSubtitle = bigSubtitle.str();
+
+			// log if the subtitle is not in the cache.
+			if(std::find(bigSubtitleCaches.begin(), bigSubtitleCaches.end(), currentSubtitle) == bigSubtitleCaches.end()){
+				logger::info("[SUBTITLES] {}", currentSubtitle);
+				
+				bigSubtitleCaches.push_back(currentSubtitle);
+
+				if(bigSubtitleCaches.size() > 5){
+					bigSubtitleCaches.erase(bigSubtitleCaches.begin());
+				}
+
+			}
+			
 			RE::GFxValue asStr(bigSubtitle.str().c_str());
 			root.Invoke("ShowSubtitle", nullptr, &asStr, 1);
 		} else {

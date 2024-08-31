@@ -1,4 +1,5 @@
 #include <vector>
+#include <algorithm>
 
 #include "Configuration.h"
 
@@ -29,6 +30,7 @@ namespace Subtitles
 		uint32_t maxDisplayedSubtitles = Subtitles::Configuration::GetSingleton()->numDisplayedSubtitles;
 
 		std::vector<RE::SubtitleInfo*> activeSubtitles;
+		std::vector<std::string> bigSubtitleCaches;
 
 	protected:
 		SubtitleManager() = default;

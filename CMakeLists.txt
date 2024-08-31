@@ -8,12 +8,16 @@ project(
 
 list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 
+
+
 # ########################################################################################################################
 # ## Build options
 # ########################################################################################################################
 message("Options:")
 option(AUTO_PLUGIN_DEPLOYMENT "Copy the build output and addons to env:${PROJECT_NAME}OutputDir." OFF)
 message("\tAuto plugin deployment: ${AUTO_PLUGIN_DEPLOYMENT}")
+
+add_compile_options(/wd4244)
 
 # #######################################################################################################################
 # # Add CMake features
